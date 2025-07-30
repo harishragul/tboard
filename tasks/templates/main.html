@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-Board</title>
+</head>
+<body>
+
+    <h1>This is my Task Board</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="task">Task</label>
+        <input type="text" name="task" id="task" required>
+
+        <label for="assigned_to">Assigned To</label>
+        <input type="text" name="assigned_to" id="assigned_to">
+
+        <button type="submit">assign</button>
+    </form>
+
+    <!--
+    <h4>Task</h4>: <p>{{ task_data.task }}</p>
+    <h4>Assigned To</h4>: <p>{{ task_data.assigned_to }}</p>
+    -->
+
+    <table>
+        <thead>
+            <th>task</th>
+            <th>assigned to</th>
+        </thead>
+
+        {% for task in tasks %}
+        <tbody>
+            <td>{{ task.task }}</td>
+            <td>{{ task.assigned_to }}</td>
+        </tbody>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
