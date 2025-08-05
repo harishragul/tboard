@@ -28,14 +28,20 @@
 
     <table>
         <thead>
+            <th>id</th>
             <th>task</th>
             <th>assigned to</th>
+            <th>update</th>
+            <th>delete</th>
         </thead>
 
         {% for task in tasks %}
         <tbody>
+            <td>{{ task.id }}</td>
             <td>{{ task.task }}</td>
             <td>{{ task.assigned_to }}</td>
+            <td><a href="{% url 'update_task' task.id %}">update</a></td>
+            <td><a href="{% url 'delete_task' task.id %}" onclick="return confirm('Are you sure?');" style="color: red;">delete</a></td>
         </tbody>
         {% endfor %}
     </table>
