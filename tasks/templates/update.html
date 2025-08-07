@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Task Dashboard</h1>
+    <a href="{% url 'logout' %}" style="color: red;">logout</a>
+    <hr>
+    
     <form method="post">
         {% csrf_token %}
 

@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Task Dashboard</h1>
-    <h3>Register User</h3>
+    <h3>User Login</h3>
     <form method="post">
         {% csrf_token %}
 
@@ -21,9 +21,10 @@
         <p style="color: red;">{{ error }}</p>
         {% endif %}
 
-        <button type="submit">register</button>
+        <button type="submit">Login</button>
 
-        <p>Already have account? <a href="{% url 'login' %}">login</a></p>
+        <p>I don't have account? <a href="{% url 'register' %}">register</a></p>
+        
     </form>
 </body>
 </html>

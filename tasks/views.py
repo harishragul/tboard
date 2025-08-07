@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from tasks.models import Task
 
 # Create your views here.
 
-def dashboard(request):    
+@login_required(login_url='login')
+def dashboard(request):   
     if request.POST:
         task = request.POST.get("task")
         assigned_to = request.POST.get("assigned_to")
@@ -21,16 +23,19 @@ def dashboard(request):
     tasks = Task.objects.all()
 
     context = {
-        "tasks": tasks
+        "tasks": tasks,
+        "username": request.user.username
     }
-    return render(request, "main.html", context)
+    return render(request, "dashboard.html", context)
 
+@login_required(login_url='login')
 def delete_task(request, task_id):
     # to delete data from DB (for particular primary key)
     task = get_object_or_404(Task, pk=task_id)
     task.delete()
     return redirect("dashboard")
 
+@login_required(login_url='login')
 def update_task(request, task_id):
     task_instance = get_object_or_404(Task, pk=task_id)
     if request.POST:
