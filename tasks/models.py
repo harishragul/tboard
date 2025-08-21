@@ -7,7 +7,7 @@ from django.utils import timezone
 class Status(models.Model):
     name = models.CharField(max_length=128, null=False, blank=False)
     description = models.TextField(null=True, blank=True)
-
+    organization = models.ForeignKey(Organization, default=None, null=True, on_delete=models.SET_NULL)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     update_at = models.DateTimeField(auto_now=True)
 
@@ -26,7 +26,7 @@ class Task(models.Model):
     acutal_effort = models.IntegerField(default=None, null=True)
     remaining_effort = models.IntegerField(default=None, null=True)
     due = models.DateTimeField(default=None)
-
+    organization = models.ForeignKey(Organization, default=None, null=True, on_delete=models.SET_NULL)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     update_at = models.DateTimeField(auto_now=True)
 
