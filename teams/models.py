@@ -11,6 +11,7 @@ class Organization(models.Model):
     address = models.TextField(null=True, blank=True)
     city = models.CharField(max_length=256, null=True, blank=True)
     zipcode = models.CharField(max_length=10, null=True, blank=True)
+    mobile = models.CharField(max_length=15, null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     update_at = models.DateTimeField(auto_now=True)
 
