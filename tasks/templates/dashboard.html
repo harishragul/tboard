@@ -18,11 +18,13 @@
     <form method="post">
         {% csrf_token %}
 
-        <label for="task">Task</label>
+        {{ task_form }}
+
+        {% comment %} <label for="task">Task</label>
         <input type="text" name="task" id="task" required>
 
         <label for="assigned_to">Assigned To</label>
-        <input type="text" name="assigned_to" id="assigned_to">
+        <input type="text" name="assigned_to" id="assigned_to"> {% endcomment %}
 
         <button type="submit">assign</button>
     </form>

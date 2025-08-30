@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-Board</title>
+</head>
+<body>
+
+    <h1>Organization</h1>
+    <p>logged-in as: <strong>{{ username }}</strong></p>
+    <a href="{% url 'logout' %}" style="color: red;">logout</a>
+    <hr>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ organization_form }}
+        <button type="submit">create</button>
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+    </form>
+
+    <hr>
+    
+    <table>
+        <thead>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>website</th>
+            <th>address</th>
+            <th>city</th>
+            <th>zipcode</th>
+        </thead>
+
+        {% for organization in organizations %}
+        <tbody>
+            <td>{{ organization.id }}</td>
+            <td>{{ organization.name }}</td>
+            <td>{{ organization.email }}</td>
+            <td>{{ organization.website }}</td>
+            <td>{{ organization.address }}</td>
+            <td>{{ organization.city }}</td>
+            <td>{{ organization.zipcode }}</td>
+        </tbody>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
